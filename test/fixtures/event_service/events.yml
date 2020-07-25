@@ -1,0 +1,18 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+product_event:
+  eventable_id: 1 
+  eventable_type: "ProductVersion" 
+  user_id: 1 
+  category: "Product" 
+  note: "This is a test note for product"
+  created_at: <%= Time.now - 2.days %>
+
+seller_event:
+  id: 2
+  eventable_id: 2 
+  eventable_type: "SellerVersion" 
+  user_id: 1 
+  category: "Seller" 
+  note: "This is a test note for seller"
+  created_at: <%= Time.now - 2.days %>
