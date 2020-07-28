@@ -3,8 +3,7 @@ require_dependency "event_service/application_controller"
 module EventService
   class EventsController < EventService::ApplicationController
     skip_before_action :verify_authenticity_token, raise: false, only: [:create]
-    before_action :authenticate_service, only: [:create]
-    before_action :authenticate_service_or_admin, only: [:index]
+    before_action :authenticate_service, only: [:create, :index]
     before_action :authenticate_user, only: [:documents_requested]
 
     def index
