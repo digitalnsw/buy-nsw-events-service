@@ -15,6 +15,7 @@ module EventService
       )
 
       if problem.save
+        mailer_params[:issue_id] = problem.id
         mailer = ::NewProblemMailer.with(mailer_params)
         mailer.report_email.deliver_later
         render json: { feedback: { id: problem.id } }
