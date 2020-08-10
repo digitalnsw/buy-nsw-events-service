@@ -21,6 +21,10 @@ module EventService
     # scope :in_state, ->(state) { where(state: state) }
     # scope :with_tag, ->(tag) { where(":tag = ANY(tags)", tag: tag) }
 
+    def set_json_error attribute, error
+      errors.add attribute, "JSON validation failed"
+    end
+
     def validate_presence_of_task_or_issue
       if task.blank? && issue.blank?
         errors.add(:base, 'must have a task or issue')
