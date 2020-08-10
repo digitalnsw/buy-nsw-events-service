@@ -16,6 +16,7 @@ module EventService
     # belongs_to :resolved_by, class_name: 'User', optional: true
 
     validate :validate_presence_of_task_or_issue
+    validates :attachment_ids, 'shared_modules/json': { schema: ['integer'] }
 
     # scope :in_state, ->(state) { where(state: state) }
     # scope :with_tag, ->(tag) { where(":tag = ANY(tags)", tag: tag) }

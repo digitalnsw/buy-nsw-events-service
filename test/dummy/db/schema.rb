@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_17_052258) do
+ActiveRecord::Schema.define(version: 2020_08_10_061049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -142,6 +142,7 @@ ActiveRecord::Schema.define(version: 2020_06_17_052258) do
     t.integer "resolved_by_id"
     t.datetime "resolved_at"
     t.string "email"
+    t.json "attachment_ids"
   end
 
   create_table "product_field_statuses", force: :cascade do |t|
@@ -486,6 +487,7 @@ ActiveRecord::Schema.define(version: 2020_06_17_052258) do
     t.boolean "offers_ict"
     t.integer "profile_address_index", default: 0
     t.json "schemes_and_panels", default: []
+    t.string "contact_position"
     t.index ["discarded_at"], name: "index_seller_versions_on_discarded_at"
     t.index ["edited_by_id"], name: "index_seller_versions_on_edited_by_id"
     t.index ["next_version_id"], name: "index_seller_versions_on_next_version_id"

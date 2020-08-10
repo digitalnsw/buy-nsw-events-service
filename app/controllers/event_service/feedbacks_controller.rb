@@ -33,6 +33,7 @@ module EventService
         :task,
         :url,
         :referer,
+        :attachment_ids,
         :browser
       ).to_h.symbolize_keys
     end
