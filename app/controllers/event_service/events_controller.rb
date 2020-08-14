@@ -26,7 +26,7 @@ module EventService
     def documents_requested
       if session_user && session_user.can_buy?
         EventService::Event.create!(
-          eventable_id: params[:seller_id],
+          eventable_id: params[:seller_id].to_i,
           eventable_type: "Seller",
           user_id: session_user.id,
           category: "Event::Seller",
@@ -37,7 +37,7 @@ module EventService
           eventable_type: "BuyerApplication",
           user_id: session_user.id,
           category: "Event::Buyer",
-          note: "Requested supplier documents: " + params[:seller_id].to_s
+          note: "Requested supplier documents: " + params[:seller_id].to_i.to_s
         )
         ::BuyerRequestedDocumentsMailer.with(seller_id: params[:seller_id]).supplier_email.deliver_later
         # This is commented because it goes to zendesk!

@@ -16,6 +16,12 @@ module EventService
     # belongs_to :resolved_by, class_name: 'User', optional: true
 
     validate :validate_presence_of_task_or_issue
+    validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
+    validates :issue, format: { with: /\A[A-Za-z0-9 .,'":;+~*\-_|()@#$%&\/\s]{0,1000}\z/ }
+    validates :task, format: { with: /\A[A-Za-z0-9 .,'":;+~*\-_|()@#$%&\/\s]{0,1000}\z/ }
+    validates :url, format: { with: URI.regexp }, allow_blank: true
+    validates :referer, format: { with: URI.regexp }, allow_blank: true
+    validates :browser, format: { with: /\A[A-Za-z0-9 .,'":;+~*\-_|()@#$%&\/\s]{0,1000}\z/ }, allow_blank: true
     validates :attachment_ids, 'shared_modules/json': { schema: ['integer'] }
 
     # scope :in_state, ->(state) { where(state: state) }
