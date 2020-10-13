@@ -3,6 +3,14 @@ module EventService
 
     acts_as_paranoid column: :discarded_at
 
+    validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+    validates :issue, format: { with: /\A[A-Za-z0-9 .,'":;+~*\-_|()@#$%&\/\s]{0,1000}\z/ }
+    validates :task, format: { with: /\A[A-Za-z0-9 .,'":;+~*\-_|()@#$%&\/\s]{0,1000}\z/ }
+    validates :url, format: { with: /\A[A-Za-z0-9 .,'":;+~*\-_|()@#$%&\/\s]{0,1000}\z/ }
+    validates :referer, format: { with: /\A[A-Za-z0-9 .,'":;+~*\-_|()@#$%&\/\s]{0,1000}\z/ }
+    validates :browser, format: { with: /\A[A-Za-z0-9 .,'":;+~*\-_|()@#$%&\/\s]{0,1000}\z/ }
+    validates :attachment_ids, 'shared_modules/json': { schema: [ 'integer'] }
+
     def locale_name
       # "events.messages.#{type.demodulize.underscore}"
     end
